@@ -26,7 +26,7 @@ class AuthenticateUserService {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new AppError('Incorrect email/password combination.');
+      throw new AppError('Incorrect email/password combination.', 401);
     }
 
     const userPassword = await this.usersRepository.getPasswordUser(user._id);
@@ -37,7 +37,7 @@ class AuthenticateUserService {
     );
 
     if (!isEqualPasswords) {
-      throw new AppError('Incorrect email/password combination.');
+      throw new AppError('Incorrect email/password combination.', 401);
     }
 
     const { secret, expiresIn } = tokenConfig.jwt;
@@ -46,6 +46,10 @@ class AuthenticateUserService {
       subject: `${user._id}`,
       expiresIn,
     });
+
+    user.update({ last_login: new Date() }).exec();
+
+    Object.assign(user, { last_login: new Date() });
 
     return {
       user,

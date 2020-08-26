@@ -8,18 +8,12 @@ class SessionsController {
   async create(request: Request, response: Response): Promise<Response> {
     const { email, password } = request.body;
 
-    console.log(email, password);
+    const { user, token } = await this.authenticateUserService.execute({
+      email,
+      password,
+    });
 
-    try {
-      const { user, token } = await this.authenticateUserService.execute({
-        email,
-        password,
-      });
-
-      return response.json({ user, token });
-    } catch (error) {
-      return response.status(401).json({ error: error.message });
-    }
+    return response.json({ user, token });
   }
 }
 

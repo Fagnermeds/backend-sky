@@ -15,7 +15,6 @@ function ensureAuthenticated(
   response: Response,
   next: NextFunction,
 ): void {
-  // Validation token JWT
   const auth = request.headers.authorization;
 
   if (!auth) {
@@ -35,7 +34,7 @@ function ensureAuthenticated(
 
     return next();
   } catch {
-    throw new AppError('Invalid JWT token.');
+    throw new AppError('Invalid JWT token.', 401);
   }
 }
 

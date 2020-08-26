@@ -6,7 +6,7 @@ import UsersRepository from '../repositories/implementations/UsersRepository';
 import HashProvider from '../providers/HashProvider/implementations/HashProvider';
 import ShowUserService from '../services/ShowUserService';
 
-const usersRouter = Router();
+const signupRouter = Router();
 
 const usersRepository = new UsersRepository();
 const hashProvider = new HashProvider();
@@ -15,8 +15,8 @@ const showUser = new ShowUserService(usersRepository);
 
 const usersController = new UsersController(createUser, showUser);
 
-usersRouter.get('/:id', (request, response) =>
-  usersController.show(request, response),
+signupRouter.post('/', (request, response) =>
+  usersController.create(request, response),
 );
 
-export default usersRouter;
+export default signupRouter;

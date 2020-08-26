@@ -6,6 +6,7 @@ export interface IUserSchema extends Document {
   email: string;
   password: string;
   phones: [{ _id: mongoose.Types.ObjectId }];
+  // eslint-disable-next-line camelcase
   last_login?: Date;
 }
 

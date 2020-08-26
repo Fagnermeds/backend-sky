@@ -7,7 +7,16 @@ import IUsersRepository, {
 } from '../interfaces/IUsersRepository';
 
 class UsersRepository implements IUsersRepository {
-  public findByEmail = async (email: string): Promise<IUserSchema> => {
+  public async findById(id: string): Promise<IUserSchema> {
+    const user = await User.findById(id)
+      .select('_id name email phones last_login')
+      .populate({ path: 'phones', select: 'ddd number -_id' })
+      .exec();
+
+    return user;
+  }
+
+  public async findByEmail(email: string): Promise<IUserSchema> {
     const user = await User.findOne({
       email,
     })
@@ -16,14 +25,14 @@ class UsersRepository implements IUsersRepository {
       .exec();
 
     return user;
-  };
+  }
 
-  public create = async ({
+  public async create({
     name,
     email,
     password,
     phones,
-  }: UserDataProps): Promise<IUserSchema> => {
+  }: UserDataProps): Promise<IUserSchema> {
     const _id = v4();
 
     const createdPhoneReferences = (await Phone.create(phones)).map(
@@ -41,7 +50,7 @@ class UsersRepository implements IUsersRepository {
     return User.findById(createdUser._id)
       .populate({ path: 'phones', select: 'ddd number -_id' })
       .exec();
-  };
+  }
 
   public getPasswordUser = async (id: string): Promise<string> => {
     const { password } = await User.findById(id).select('+password');

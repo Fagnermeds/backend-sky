@@ -13,6 +13,7 @@ export interface UserDataProps {
 }
 
 interface IUsersRepository {
+  findById(id: string): Promise<IUserSchema>;
   findByEmail(email: string): Promise<IUserSchema>;
   create(userData: UserDataProps): Promise<IUserSchema>;
   getPasswordUser(id: string): Promise<string>;
