@@ -1,10 +1,10 @@
-import { Router, request } from 'express';
+import { Router } from 'express';
 
-import UsersController from '../controllers/UsersController';
-import CreateUserService from '../services/CreateUserService';
-import UsersRepository from '../repositories/implementations/UsersRepository';
-import HashProvider from '../providers/HashProvider/implementations/HashProvider';
-import ShowUserService from '../services/ShowUserService';
+import CreateUserService from '@modules/users/services/CreateUserService';
+import UsersRepository from '@modules/users/repositories/implementations/UsersRepository';
+import ShowUserService from '@modules/users/services/ShowUserService';
+import HashProvider from '../../../../../providers/HashProvider/implementations/HashProvider';
+import UsersController from '../../../../../controllers/UsersController';
 
 const usersRouter = Router();
 

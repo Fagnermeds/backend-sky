@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 
-import User, { IUserSchema } from '../../schemas/User';
-import Phone from '../../schemas/Phone';
+import User, { IUserSchema } from '@modules/users/infra/mongoose/entities/User';
+import Phone from '@modules/users/infra/mongoose/entities/Phone';
 import IUsersRepository, {
   UserDataProps,
 } from '../interfaces/IUsersRepository';

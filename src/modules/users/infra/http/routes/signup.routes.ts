@@ -1,10 +1,10 @@
-import { Router, request } from 'express';
+import { Router } from 'express';
 
-import UsersController from '../controllers/UsersController';
-import CreateUserService from '../services/CreateUserService';
-import UsersRepository from '../repositories/implementations/UsersRepository';
-import HashProvider from '../providers/HashProvider/implementations/HashProvider';
-import ShowUserService from '../services/ShowUserService';
+import UsersController from '../../../../../controllers/UsersController';
+import CreateUserService from '../../../services/CreateUserService';
+import UsersRepository from '../../../repositories/implementations/UsersRepository';
+import HashProvider from '../../../../../providers/HashProvider/implementations/HashProvider';
+import ShowUserService from '../../../services/ShowUserService';
 
 const signupRouter = Router();
 

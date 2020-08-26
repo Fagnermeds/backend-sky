@@ -1,4 +1,4 @@
-import { IUserSchema } from '../../schemas/User';
+import { IUserSchema } from '@modules/users/infra/mongoose/entities/User';
 
 export interface UserDataProps {
   name: string;
@@ -15,8 +15,8 @@ export interface UserDataProps {
 interface IUsersRepository {
   findById(id: string): Promise<IUserSchema>;
   findByEmail(email: string): Promise<IUserSchema>;
-  create(userData: UserDataProps): Promise<IUserSchema>;
-  getPasswordUser(id: string): Promise<string>;
+  create?(userData: UserDataProps): Promise<IUserSchema>;
+  getPasswordUser?(id: string): Promise<string>;
 }
 
 export default IUsersRepository;

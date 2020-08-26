@@ -3,7 +3,7 @@ import 'express-async-errors';
 
 import routes from './routes';
 import globalHandling from './middlewares/globalHandling';
-import './database';
+import '../database';
 
 const app = express();
 

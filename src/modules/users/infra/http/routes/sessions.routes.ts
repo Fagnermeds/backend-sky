@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import SessionsController from '../controllers/SessionsController';
-import AuthenticateUserService from '../services/AuthenticateUserService';
-import UsersRepository from '../repositories/implementations/UsersRepository';
-import HashProvider from '../providers/HashProvider/implementations/HashProvider';
+import UsersRepository from '@modules/users/repositories/implementations/UsersRepository';
+import SessionsController from '../../../../../controllers/SessionsController';
+import AuthenticateUserService from '../../../services/AuthenticateUserService';
+import HashProvider from '../../../../../providers/HashProvider/implementations/HashProvider';
 
 const sessionsRouter = Router();
 

@@ -1,9 +1,9 @@
 import IUsersRepository, {
   UserDataProps,
-} from '../repositories/interfaces/IUsersRepository';
-import AppError from '../errors/AppError';
-import { IUserSchema } from '../schemas/User';
-import IHashProvider from '../providers/HashProvider/interfaces/IHashProvider';
+} from '@modules/users/repositories/interfaces/IUsersRepository';
+import { IUserSchema } from '@modules/users/infra/mongoose/entities/User';
+import AppError from '@shared/errors/AppError';
+import IHashProvider from '../../../providers/HashProvider/interfaces/IHashProvider';
 
 class CreateUserService {
   constructor(

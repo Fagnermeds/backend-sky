@@ -1,10 +1,10 @@
 import { sign } from 'jsonwebtoken';
 
-import IUsersRepository from '../repositories/interfaces/IUsersRepository';
-import tokenConfig from '../config/token';
-import IHashProvider from '../providers/HashProvider/interfaces/IHashProvider';
-import AppError from '../errors/AppError';
-import { IUserSchema } from '../schemas/User';
+import IUsersRepository from '@modules/users/repositories/interfaces/IUsersRepository';
+import tokenConfig from '@config/token';
+import AppError from '@shared/errors/AppError';
+import IHashProvider from '../../../providers/HashProvider/interfaces/IHashProvider';
+import { IUserSchema } from '../infra/mongoose/entities/User';
 
 interface IRequest {
   email: string;
@@ -47,7 +47,7 @@ class AuthenticateUserService {
       expiresIn,
     });
 
-    user.update({ last_login: new Date() }).exec();
+    user.updateOne({ last_login: new Date() }).exec();
 
     Object.assign(user, { last_login: new Date() });
 

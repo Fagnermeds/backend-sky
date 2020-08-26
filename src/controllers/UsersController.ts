@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
-import CreateUserService from '../services/CreateUserService';
-import ShowUserService from '../services/ShowUserService';
+import CreateUserService from '../modules/users/services/CreateUserService';
+import ShowUserService from '../modules/users/services/ShowUserService';
 
 class UsersController {
   constructor(
