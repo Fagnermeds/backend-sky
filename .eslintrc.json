@@ -27,7 +27,11 @@
       {
         "ts": "never"
       }
-    ]
+    ],          
+    "no-underscore-dangle": "off",
+    "no-useless-constructor": "off",
+    "@typescript-eslint/camelcase": "off",
+    "class-methods-use-this": "off"
   },
   "settings": {
     "import/resolver": {
