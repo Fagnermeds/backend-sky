@@ -3,7 +3,7 @@ import { sign } from 'jsonwebtoken';
 import IUsersRepository from '@modules/users/repositories/interfaces/IUsersRepository';
 import tokenConfig from '@config/token';
 import AppError from '@shared/errors/AppError';
-import IHashProvider from '../../../providers/HashProvider/interfaces/IHashProvider';
+import IHashProvider from '../providers/HashProvider/interfaces/IHashProvider';
 import { IUserSchema } from '../infra/mongoose/entities/User';
 
 interface IRequest {

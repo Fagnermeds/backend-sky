@@ -21,6 +21,7 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "@typescript-eslint/camelcase": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -30,12 +31,8 @@
     ],          
     "no-underscore-dangle": "off",
     "no-useless-constructor": "off",
-    "@typescript-eslint/camelcase": "off",
     "class-methods-use-this": "off",
     "no-shadow": "off"
-    // "@typescript-eslint/no-unused-vars": ["error", {
-    //   "argsIgnorePattern": "_"
-    // }]
   },
   "settings": {
     "import/resolver": {

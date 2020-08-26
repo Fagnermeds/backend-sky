@@ -1,9 +1,8 @@
-import IUsersRepository, {
-  UserDataProps,
-} from '@modules/users/repositories/interfaces/IUsersRepository';
+import IUsersRepository from '@modules/users/repositories/interfaces/IUsersRepository';
 import { IUserSchema } from '@modules/users/infra/mongoose/entities/User';
 import AppError from '@shared/errors/AppError';
-import IHashProvider from '../../../providers/HashProvider/interfaces/IHashProvider';
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
+import IHashProvider from '../providers/HashProvider/interfaces/IHashProvider';
 
 class CreateUserService {
   constructor(
@@ -16,7 +15,7 @@ class CreateUserService {
     email,
     password,
     phones,
-  }: UserDataProps): Promise<IUserSchema> {
+  }: ICreateUserDTO): Promise<IUserSchema> {
     const user = await this.usersRepository.findByEmail(email);
 
     if (user) {

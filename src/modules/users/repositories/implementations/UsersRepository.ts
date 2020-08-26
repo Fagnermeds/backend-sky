@@ -2,9 +2,8 @@ import { v4 } from 'uuid';
 
 import User, { IUserSchema } from '@modules/users/infra/mongoose/entities/User';
 import Phone from '@modules/users/infra/mongoose/entities/Phone';
-import IUsersRepository, {
-  UserDataProps,
-} from '../interfaces/IUsersRepository';
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
+import IUsersRepository from '../interfaces/IUsersRepository';
 
 class UsersRepository implements IUsersRepository {
   public async findById(id: string): Promise<IUserSchema> {
@@ -32,7 +31,7 @@ class UsersRepository implements IUsersRepository {
     email,
     password,
     phones,
-  }: UserDataProps): Promise<IUserSchema> {
+  }: ICreateUserDTO): Promise<IUserSchema> {
     const _id = v4();
 
     const createdPhoneReferences = (await Phone.create(phones)).map(
