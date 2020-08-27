@@ -22,6 +22,10 @@ describe('CreateUser', () => {
     });
   });
 
+  afterAll(async () => {
+    await mongoose.connection.close();
+  });
+
   beforeEach(async () => {
     await User.deleteMany({});
 
@@ -30,11 +34,6 @@ describe('CreateUser', () => {
 
     createUser = new CreateUserService(usersRepository, hashProvider);
   });
-
-  afterAll(async () => {
-    await mongoose.connection.close();
-  });
-
   it('should be able to create a new user', async () => {
     const createdUser = await createUser.execute({
       name: 'test',
