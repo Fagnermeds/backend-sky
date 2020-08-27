@@ -46,9 +46,11 @@ class UsersRepository implements IUsersRepository {
       phones: createdPhoneReferences,
     });
 
-    return User.findById(createdUser._id)
+    const user = User.findById(createdUser._id)
       .populate({ path: 'phones', select: 'ddd number -_id' })
       .exec();
+
+    return user;
   }
 
   public getPasswordUser = async (id: string): Promise<string> => {
