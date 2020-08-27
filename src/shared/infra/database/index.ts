@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://localhost/api-sky', {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
